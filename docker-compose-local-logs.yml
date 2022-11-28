@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   node:
-    image: ghcr.io/gnosischain/gbc-nimbus:v22.5.1
+    image: ghcr.io/k1rill-fedoseev/gbc-nimbus:v22.10.2-unstable
     user: root
     hostname: node
     restart: always
@@ -38,7 +38,7 @@ services:
         max-size: "100m"
         max-file: "1"
   trusted-sync:
-    image: ghcr.io/gnosischain/gbc-nimbus:v22.5.1
+    image: ghcr.io/k1rill-fedoseev/gbc-nimbus:v22.10.2-unstable
     user: root
     command: |
       trustedNodeSync
@@ -60,7 +60,7 @@ services:
         max-size: "100m"
         max-file: "1"
   validator-import:
-    image: ghcr.io/gnosischain/gbc-nimbus:v22.5.1
+    image: ghcr.io/k1rill-fedoseev/gbc-nimbus:v22.10.2-unstable
     user: root
     command: |
       deposits import /root/sbc/keys
@@ -72,7 +72,7 @@ services:
       - ./validators/validators:/root/sbc/validators/validators
       - ./validators/secrets:/root/sbc/validators/secrets
   validator-import-slashing-protection:
-    image: ghcr.io/gnosischain/gbc-nimbus:v22.5.1
+    image: ghcr.io/k1rill-fedoseev/gbc-nimbus:v22.10.2-unstable
     user: root
     command: |
       slashingdb import /root/sbc/config/slashing_protection.json
@@ -86,7 +86,7 @@ services:
         max-size: "100m"
         max-file: "1"
   validator-export-slashing-protection:
-    image: ghcr.io/gnosischain/gbc-nimbus:v22.5.1
+    image: ghcr.io/k1rill-fedoseev/gbc-nimbus:v22.10.2-unstable
     user: root
     command: |
       slashingdb export /root/sbc/config/slashing_protection.json
